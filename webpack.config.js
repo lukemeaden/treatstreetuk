@@ -20,7 +20,7 @@ module.exports = {
                 ]
             },
             {
-                test: /\.(pdf|jpe?g|gif)$/i,
+                test: /\.(pdf|jpe?g|gif|png)$/i,
                 use: [
                     {
                         loader: 'file-loader',
@@ -33,7 +33,11 @@ module.exports = {
         ]
     },
     output: {
+        publicPath: "/",
         path: __dirname + '/docs'
+    },
+    devServer: {
+        historyApiFallback: true
     },
     plugins: [
         new HtmlWebPackPlugin({
