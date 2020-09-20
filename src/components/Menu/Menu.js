@@ -10,25 +10,24 @@ class Menu extends Component {
 
     componentDidMount(){
         this.updateWidth(this.pdfContainer.current.offsetWidth);
-        window.addEventListener('resize', this.updateWidth(this.pdfContainer.current.offsetWidth))
+        window.addEventListener('resize', this.updateWidth(this.pdfContainer.current.offsetWidth));
     }
 
     updateWidth(width){
-        this.setState({ width })
+        this.setState({ width });
     }
 
     render() {
         const { width } = this.state;
         return (
             <div className="container">
-                <div className="row">
-                    <div className="col" ref={this.pdfContainer}>
-                        <Document file={this.props.pdfMenu}>
-                            <Page pageNumber={1} width={width - 30} />
-                            <Page pageNumber={2} width={width - 30} />
-                        </Document>
-                    </div>
-                </div>
+                <div className="row"><div className="col col-xs-12 col-md-6" ref={this.pdfContainer}></div></div>
+                <Document file={this.props.pdfMenu} className="row">
+                    <Page pageNumber={1} width={width - 30} className="col col-xs-12 col-md-6" />
+                    <Page pageNumber={2} width={width - 30} className="col col-xs-12 col-md-6" />
+                    <Page pageNumber={3} width={width - 30} className="col col-xs-12 col-md-6" />
+                    <Page pageNumber={4} width={width - 30} className="col col-xs-12 col-md-6" />
+                </Document>
                 <div className="row">
                     <div className="col">
                         <a href={this.props.pdfMenu} target="_blank" className="btn btn-primary" style={{ marginTop: '20px' }}><i className="fa fa-download"></i> Download menu</a>
